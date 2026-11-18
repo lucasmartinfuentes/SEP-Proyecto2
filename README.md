@@ -12,7 +12,8 @@ generada por un IP Core propio.
 
 | Parte | Estado |
 | :--- | :--- |
-| Vivado: plantilla del curso + 2 AXI Timer + interrupción del sensor de luz | Listo. Bitstream generado, timing cumplido (WNS +2,8 ns) |
+| Vivado: plantilla del curso + 2 AXI Timer + interrupción del sensor de luz | Listo. Bitstream generado, sin advertencias críticas, timing cumplido en los dos relojes (WNS +2,45 ns) |
+| Hardware exportado (`hw/P2_SEP.xsa`, con bitstream) | Listo |
 | Vitis: plataforma y aplicación | Listo. Compila sin errores ni warnings |
 | `vitis_src/main.c` | Esqueleto: inicializaciones, interrupciones, registros del OPT3001 y máquina de estados. La lógica del juego está pendiente (marcada con `TODO`) |
 | Pruebas en la Zybo | Pendiente |
@@ -48,43 +49,67 @@ generada por un IP Core propio.
 5. Diagrama: todas las actividades, datos sobre las flechas, un color por actividad y la
    separación Vivado/Vitis.
 
-## Cómo generar el proyecto
+## Cómo trabajar
 
 Requisitos: Vivado/Vitis **2020.1** (versión del curso), board files de Digilent y los
 drivers del cable (guía en `docs/instalar_vivado_2020.1.md`; los drivers se instalan con
 `docs/instalar_cable_drivers.bat` como administrador).
 
 Clonar en una ruta corta y fuera de OneDrive (OneDrive bloquea archivos durante la
-compilación y Windows limita las rutas a 260 caracteres):
+compilación y Windows limita las rutas a 260 caracteres), por ejemplo
+`C:\SEP\proyecto2`:
 
 ```bat
 git clone https://github.com/lucasmartinfuentes/SEP-Proyecto2.git C:\SEP\proyecto2
-cd C:\SEP\proyecto2
-D:\Xilinx\Vivado\2020.1\bin\vivado.bat -mode batch -source scripts/01_crear_proyecto.tcl
-D:\Xilinx\Vivado\2020.1\bin\vivado.bat -mode batch -source scripts/03_build.tcl
-D:\Xilinx\Vitis\2020.1\bin\xsct.bat scripts/04_vitis.tcl
 ```
 
-Resultado: `vivado/` (proyecto, bitstream, `P2_SEP.xsa`) y `vitis/` (workspace con la
-plataforma `P2_plat` y la app `P2_app`). Ninguna de las dos carpetas se versiona.
+Los `.bat` de la raíz se usan con doble clic y buscan Xilinx en `C:\`, `D:\` o `E:\`.
 
-Para programar: abrir Vitis con el workspace `C:\SEP\proyecto2\vitis`, clic derecho en
-`P2_app` → *Run As → Launch Hardware*. Consola serial en el COM de la Zybo a 115200 8N1.
+### Solo código C (sin abrir Vivado)
 
-Si un script falla a la mitad, borrar `vivado/` o `vitis/` y volver a correrlo.
+1. Doble clic en **`crear_vitis.bat`**: crea `vitis\` desde `hw\P2_SEP.xsa` y compila.
+2. Abrir Vitis 2020.1 con el workspace `<repo>\vitis`.
+3. Programar: clic derecho en `P2_app` → *Run As → Launch Hardware*. Consola serial en
+   el COM de la Zybo a 115200 8N1.
+
+El código se edita en `vitis_src\` (es lo que se versiona). Lo editado dentro de Vitis
+(`vitis\P2_app\src`) se copia de vuelta a `vitis_src\` antes de hacer commit.
+
+### Cambios de hardware (Vivado, por GUI)
+
+1. Doble clic en **`abrir_vivado.bat`** (abre `vivado\P2_SEP.xpr`; no cerrar la
+   ventana negra, es la consola de Vivado).
+2. Editar el block design, constraints o IP con la GUI.
+3. *Generate Bitstream*.
+4. *File → Export → Export Hardware* → *Include bitstream* → guardar como
+   **`hw\P2_SEP.xsa`** (reemplazar).
+5. Commit de `vivado\` (solo se versionan las fuentes: `.xpr`, `.bd`, wrapper, `.xci`,
+   VHDL) y de `hw\P2_SEP.xsa`.
+6. En Vitis, actualizar la plataforma con el `.xsa` nuevo (clic derecho en `P2_plat` →
+   *Update Hardware Specification*) o borrar `vitis\` y correr `crear_vitis.bat`.
+
+La primera vez que se abre el proyecto en otro PC, Vivado regenera los productos del
+block design al compilar (los archivos generados no se versionan).
+
+### Regenerar desde cero (respaldo)
+
+Si `vivado\` se rompe: borrar la carpeta y hacer doble clic en `regenerar_vivado.bat`.
+Recrea el proyecto desde la plantilla con `scripts\01_crear_proyecto.tcl` y
+`scripts\02_hw_avance.tcl`, compila y exporta `hw\P2_SEP.xsa`. **Descarta los cambios
+hechos por GUI** que no estén también en `02_hw_avance.tcl`.
 
 ## Estructura
 
-| Carpeta | Contenido |
+| Ruta | Contenido |
 | :--- | :--- |
-| `scripts/01_crear_proyecto.tcl` | Crea `vivado/P2_SEP.xpr` desde la plantilla oficial (sin modificarla) |
-| `scripts/02_hw_avance.tcl` | Hardware agregado: 2 AXI Timer, AXI GPIO de la interrupción de luz, Concat → `IRQ_F2P` |
-| `scripts/03_build.tcl` | Síntesis, implementación, bitstream, reporte de timing y export del `.xsa` |
-| `scripts/04_vitis.tcl` | Plataforma + aplicación en `vitis/`, importa `vitis_src/` y compila |
-| `constraints/` | `.xdc` de la plantilla + pin U15 (INT del OPT3001) |
-| `ip_repo/` | IP Cores propios (por ahora la base `BUZZER_1.0`) |
+| `vivado/P2_SEP.xpr` | Proyecto de Vivado (se abre con la GUI) |
+| `hw/P2_SEP.xsa` | Hardware exportado con bitstream; es lo que usa Vitis |
 | `vitis_src/` | Código C: drivers de la plantilla (LCD, ADC, I2C, Delay) y `main.c` |
+| `constraints/` | `.xdc` de la plantilla + pin U15 (INT del OPT3001) + reloj de 125 MHz |
+| `ip_repo/` | IP Cores propios (por ahora la base `BUZZER_1.0`) |
 | `plantilla/` | `Proyecto_Base_Booster_2025` oficial (repo PROY02). No se edita |
+| `scripts/` | Tcl de respaldo: crear proyecto (01, 02), compilar (03), Vitis (04) |
+| `*.bat` | Accesos de doble clic: abrir Vivado, crear Vitis, regenerar desde cero |
 | `docs/` | Guías de instalación |
 | `CONTEXT.md` | Contexto completo del curso y del proyecto para usar con una IA |
 
@@ -98,21 +123,23 @@ Si un script falla a la mitad, borrar `vivado/` o `vitis/` y volver a correrlo.
 | `axi_quad_spi_0` | plantilla | – | Pantalla |
 | `axi_quad_spi_1` | plantilla | – | ADC: joystick, acelerómetro, micrófono |
 | `axi_iic_0` | plantilla | – | TMP006 (0x40) y OPT3001 (0x44) |
-| `BUZZER_0` | plantilla | – | Módulo RTL sin AXI (botones de la Booster → tono y volumen) |
+| `BUZZER_0` | plantilla | – | Módulo RTL sin AXI (botones de la Booster → tono y volumen), reloj de 125 MHz |
 
-Reloj de la lógica: 100 MHz (FCLK0). En C se usan las macros de `xparameters.h`
-(`XPAR_FABRIC_..._INTR`), no los números.
+Reloj de los periféricos AXI: 100 MHz (FCLK0). CPU: 667 MHz. En C se usan las macros de
+`xparameters.h` (`XPAR_FABRIC_..._INTR`), no los números.
 
 ## Notas
 
 - La plantilla de Vitis no compilaba en 2020.1. Se corrigieron dos archivos:
   `LCD_GUI.h` (declaración duplicada del arreglo `intro`) y `Delay.c` (`<unistd.h>`
   chocaba con `sleep.h`).
+- El `.xdc` de la plantilla no restringía el reloj de 125 MHz (`create_clock` comentado
+  y con otro nombre de puerto), así que el `BUZZER` quedaba sin análisis de timing. Se
+  agregó el `create_clock`.
+- Advertencias que quedan y son de la plantilla: CKLD-2 (el reloj de 125 MHz no pasa por
+  un buffer global), BUFC-1 (entradas del SPI del ADC sin uso) y TIMING-18 (pines sin
+  input/output delay). No afectan el funcionamiento.
 - `read_opt()` de `I2C.c` reescribe la configuración del OPT3001 en cada lectura; por
   eso `main.c` usa sus propias funciones de lectura/escritura de registros.
 - Los botones de la Booster están conectados al módulo `BUZZER`, no al procesador. Para
   leerlos desde C hay que pasarlos a un AXI GPIO o al IP de música.
-- Los cambios hechos al block design desde la GUI no quedan en el repo (`vivado/` no se
-  versiona): hay que copiarlos como comandos Tcl a `scripts/02_hw_avance.tcl`.
-- `04_vitis.tcl` copia `vitis_src/` al workspace. Lo editado dentro de Vitis se debe
-  copiar de vuelta a `vitis_src/` antes de hacer commit.

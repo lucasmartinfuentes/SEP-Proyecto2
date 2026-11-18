@@ -37,9 +37,11 @@ archivo, este archivo manda.
     fuente exacta para el informe.
 11. Preferir soluciones **simples y demostrables en la Zybo**. El objetivo del grupo es
     buena nota con el mínimo trabajo extra.
-12. Si una propuesta cambia el hardware, entregar los **comandos Tcl** para agregarlos a
-    `scripts/02_hw_avance.tcl`: el repo no versiona `vivado/` y el proyecto se regenera
-    desde scripts.
+12. Si una propuesta cambia el hardware, describirla como **pasos en la GUI de Vivado**
+    (el grupo edita `vivado/P2_SEP.xpr` por GUI y lo versiona). Opcionalmente, dar
+    también los comandos Tcl equivalentes para `scripts/02_hw_avance.tcl` (respaldo para
+    regenerar desde cero). Después de cambiar hardware: *Generate Bitstream* y *Export
+    Hardware* (con bitstream) a `hw/P2_SEP.xsa`.
 13. Al proponer código para `vitis_src/main.c`, **mantener los nombres existentes**
     (sección 8) y completar los bloques marcados `TODO`.
 
@@ -400,7 +402,8 @@ bloque puede tener borde de un color y relleno de otro si cumple dos actividades
 `XPAR_FABRIC_AXI_TIMER_0_INTERRUPT_INTR`, `XPAR_FABRIC_AXI_TIMER_1_INTERRUPT_INTR`,
 `XPAR_FABRIC_AXI_GPIO_LUZ_IP2INTC_IRPT_INTR`.
 
-Resultados de compilación: bitstream generado, timing cumplido (WNS +2,806 ns), `.xsa`
+Resultados de compilación: bitstream generado, sin advertencias críticas, timing cumplido
+en `clk_fpga_0` (100 MHz) y `sys_clk_pin` (125 MHz, del `BUZZER`) con WNS +2,447 ns, `.xsa`
 con bitstream exportado. ELF de la app: 145 KB de código.
 
 ### 6.3 Pines (`constraints/Zybo-Z7-Master.xdc`)
@@ -853,8 +856,9 @@ Períodos a 100 MHz (`periodo = 100e6 / f`; el máximo de 20 bits da f mínima �
 Integración en Vivado: crear el IP en `ip_repo/` (*Create and Package New IP*), agregarlo
 al block design, conectar `S00_AXI` con *Run Connection Automation*, exportar
 `BUZZER_PWM` al pin **T14** y **quitar** el `BUZZER_0` de la plantilla (mismo pin; además
-el block design no debe tener bloques basura). Llevar esos pasos como Tcl a
-`02_hw_avance.tcl`.
+el block design no debe tener bloques basura). Al quitar `BUZZER_0` también deja de
+usarse el reloj de 125 MHz (`clk`, K17): borrar su `create_clock` y su pin del `.xdc`.
+Hecho por GUI; opcionalmente reflejarlo como Tcl en `02_hw_avance.tcl`.
 
 ### 10.2 Codificar umbrales del OPT3001
 
@@ -988,8 +992,13 @@ Candidatos razonables de originalidad para este proyecto, en orden de costo: **S
 - `read_opt()` reescribe la config del OPT3001 en cada lectura.
 - `scanf` bloquea: pedir los parámetros por UART antes de arrancar los timers o en el
   estado MENÚ.
-- Cambios al block design hechos en la GUI no quedan en el repo: copiarlos como Tcl a
-  `02_hw_avance.tcl`.
+- El `.xdc` de la plantilla no restringía el reloj de 125 MHz (`create_clock` comentado y
+  con el puerto `sysclk` en vez de `clk`): el `BUZZER` quedaba sin análisis de timing
+  (24 registros sin reloj, TIMING-17). Ya está corregido.
+- Advertencias restantes, de la plantilla e inofensivas: CKLD-2 (reloj de 125 MHz sin
+  BUFG), BUFC-1 (entradas SPI del ADC sin uso), TIMING-18 (pines sin input/output delay).
+- Si se edita el block design por GUI, `regenerar_vivado.bat` (scripts 01/02) ya no
+  reproduce ese diseño salvo que los cambios se copien a `02_hw_avance.tcl`.
 
 ---
 
@@ -997,11 +1006,16 @@ Candidatos razonables de originalidad para este proyecto, en orden de costo: **S
 
 ```
 SEP-Proyecto2/
-├─ README.md                       estado, plan y cómo generar el proyecto
+├─ README.md                       estado, plan y cómo trabajar
 ├─ CONTEXT.md                      este archivo
-├─ scripts/01_crear_proyecto.tcl   plantilla -> vivado/P2_SEP.xpr
+├─ vivado/P2_SEP.xpr               proyecto de Vivado (se edita por GUI; se versionan sus fuentes)
+├─ hw/P2_SEP.xsa                   hardware exportado con bitstream (lo usa Vitis)
+├─ abrir_vivado.bat                doble clic: abre el proyecto en la GUI
+├─ crear_vitis.bat                 doble clic: workspace vitis/ desde hw/P2_SEP.xsa + build
+├─ regenerar_vivado.bat            respaldo: recrea vivado/ desde la plantilla con scripts
+├─ scripts/01_crear_proyecto.tcl   plantilla -> vivado/P2_SEP.xpr (solo para regenerar)
 ├─ scripts/02_hw_avance.tcl        hardware del grupo (timers, gpio_luz, concat)
-├─ scripts/03_build.tcl            bitstream + timing + export XSA
+├─ scripts/03_build.tcl            bitstream + timing + export a hw/P2_SEP.xsa
 ├─ scripts/04_vitis.tcl            plataforma + app Hello World + importa vitis_src/ + build
 ├─ constraints/Zybo-Z7-Master.xdc
 ├─ ip_repo/                        IP propios (BUZZER_1.0: plantilla AXI vacía)
@@ -1010,15 +1024,17 @@ SEP-Proyecto2/
 └─ docs/                           guías de instalación
 ```
 
-Comandos (Vivado/Vitis en `D:\Xilinx`):
+Flujo normal (GUI, sin scripts):
 
-```bat
-D:\Xilinx\Vivado\2020.1\bin\vivado.bat -mode batch -source scripts/01_crear_proyecto.tcl
-D:\Xilinx\Vivado\2020.1\bin\vivado.bat -mode batch -source scripts/03_build.tcl
-D:\Xilinx\Vitis\2020.1\bin\xsct.bat scripts/04_vitis.tcl
-```
+- Hardware: `abrir_vivado.bat` → editar → *Generate Bitstream* → *File → Export → Export
+  Hardware* (*Include bitstream*) a `hw/P2_SEP.xsa` → commit de `vivado/` y `hw/`.
+- Software: `crear_vitis.bat` (o en Vitis: *Platform Project* con `hw/P2_SEP.xsa`, app
+  *Hello World*, borrar `helloworld.c`, importar `vitis_src/`). Si cambia el `.xsa`:
+  clic derecho en `P2_plat` → *Update Hardware Specification*.
 
-- `vivado/`, `vitis/` y `logs/` no se versionan.
+- De `vivado/` se versionan solo las fuentes (`.xpr`, `.bd`, wrapper, `.xci`, VHDL);
+  Vivado regenera lo demás. `vitis/` y `logs/` no se versionan; el código C vive en
+  `vitis_src/`.
 - La app se crea desde la plantilla **Hello World** (trae `platform.c/h`, que los drivers
   incluyen) y se borra `helloworld.c`.
 - Entrega final: *File → Project → Archive* en Vivado y *File → Export* en Vitis, en un
