@@ -1,5 +1,21 @@
-# Generado por los scripts (se regenera con 01_crear_proyecto.tcl + 03_build.tcl)
-/vivado/
+# -----------------------------------------------------------------------------
+# Proyecto de Vivado: se versionan SOLO las fuentes, para poder abrir
+# vivado/P2_SEP.xpr y editar por GUI. Vivado regenera el resto
+# (Generate Output Products / Generate Bitstream).
+# -----------------------------------------------------------------------------
+/vivado/*
+!/vivado/P2_SEP.xpr
+!/vivado/P2_SEP.srcs/
+
+# Del block design se guarda el .bd, el wrapper y la config (.xci) de cada IP.
+/vivado/P2_SEP.srcs/sources_1/bd/DEMO/*
+!/vivado/P2_SEP.srcs/sources_1/bd/DEMO/DEMO.bd
+!/vivado/P2_SEP.srcs/sources_1/bd/DEMO/hdl/
+!/vivado/P2_SEP.srcs/sources_1/bd/DEMO/ip/
+/vivado/P2_SEP.srcs/sources_1/bd/DEMO/ip/*/*
+!/vivado/P2_SEP.srcs/sources_1/bd/DEMO/ip/*/*.xci
+
+# Workspace de Vitis y logs: se regeneran
 /vitis/
 /logs/
 

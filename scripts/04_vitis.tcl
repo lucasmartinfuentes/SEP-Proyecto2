@@ -1,7 +1,7 @@
 # =============================================================================
 #  04_vitis.tcl  --  Proyecto 2 IEE2463 (SEP)
 # -----------------------------------------------------------------------------
-#  Crea el workspace de Vitis (plataforma + aplicacion) desde vivado/P2_SEP.xsa
+#  Crea el workspace de Vitis (plataforma + aplicacion) desde hw/P2_SEP.xsa
 #  e importa el codigo de vitis_src/. Equivale a hacerlo a mano en la GUI:
 #    Platform Project con el .xsa -> Application Project "Hello World" ->
 #    borrar helloworld.c -> importar vitis_src/.
@@ -18,10 +18,10 @@
 
 set ROOT [file normalize [file join [file dirname [info script]] ..]]
 set WS   [file join $ROOT vitis]
-set XSA  [file join $ROOT vivado P2_SEP.xsa]
+set XSA  [file join $ROOT hw P2_SEP.xsa]
 set SRC  [file join $ROOT vitis_src]
 
-if {![file exists $XSA]} { error "Falta $XSA. Corra antes 01_crear_proyecto.tcl y 03_build.tcl" }
+if {![file exists $XSA]} { error "Falta $XSA. En Vivado: File > Export > Export Hardware (Include bitstream) a hw/P2_SEP.xsa" }
 if {[file exists $WS]}   { error "$WS ya existe. Borrelo antes de regenerar el workspace." }
 
 setws $WS

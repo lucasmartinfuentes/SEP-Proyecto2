@@ -10,7 +10,8 @@
 
 set ROOT     [file normalize [file join [file dirname [info script]] ..]]
 set PROJ_XPR [file join $ROOT vivado P2_SEP.xpr]
-set XSA      [file join $ROOT vivado P2_SEP.xsa]
+set XSA      [file join $ROOT hw P2_SEP.xsa]   ;# versionado: lo usa Vitis
+file mkdir [file join $ROOT hw]
 set JOBS     4
 
 if {[catch {current_project}]} {
