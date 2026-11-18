@@ -2,7 +2,7 @@
  *  main.c  --  Proyecto 2 IEE2463 SEP  --  "Flappy por voz" (nombre tentativo)
  * -----------------------------------------------------------------------------
  *  ESTADO: ESQUELETO TENTATIVO. Tiene la estructura completa, pero la logica del
- *  juego esta por hacer. Cada hueco esta marcado con  TODO(compa):  (Ctrl+F).
+ *  juego esta por hacer. Cada hueco esta marcado con  TODO:  (buscar "TODO").
  *  No se ha compilado ni probado en la Zybo todavia.
  *
  *  Que ya esta escrito aca (infraestructura, no depende del juego):
@@ -79,7 +79,7 @@ extern XIic  iic;            /* I2C: TMP006 (0x40) y OPT3001 (0x44)      */
 #define OPT_REG_LIM_BAJO     0x02
 #define OPT_REG_LIM_ALTO     0x03
 
-/* TODO(compa): definir la configuracion y los umbrales de la interrupcion de luz.
+/* TODO: definir la configuracion y los umbrales de la interrupcion de luz.
  *   - OPT_CONFIG: 0xC410 es la que usa la plantilla (rango auto, 100 ms, continuo,
  *     latch). Revisar en el datasheet los bits L (latch), POL (polaridad) y FC
  *     (cuantas lecturas fuera de rango antes de disparar) y decidir.
@@ -89,8 +89,8 @@ extern XIic  iic;            /* I2C: TMP006 (0x40) y OPT3001 (0x44)      */
  *   OJO: read_opt() de I2C.c reescribe 0xC410 en la config en cada lectura. Aca no
  *   se usa read_opt(); se lee con opt3001_leer_reg(). */
 #define OPT_CONFIG           0xC410
-#define OPT_UMBRAL_BAJO      0x0000  /* TODO(compa) */
-#define OPT_UMBRAL_ALTO      0xBFFF  /* TODO(compa) */
+#define OPT_UMBRAL_BAJO      0x0000  /* TODO */
+#define OPT_UMBRAL_ALTO      0xBFFF  /* TODO */
 
 /* ---------------------------------------------------------------------------
  *  Parametros del juego (pantalla de la Booster: 128 x 128 px, colores RGB565)
@@ -103,7 +103,7 @@ extern XIic  iic;            /* I2C: TMP006 (0x40) y OPT3001 (0x44)      */
 #define PAJARO_X             30
 #define PAJARO_TAM           8
 
-/* TODO(compa): ajustar la fisica en la placa (unidades: px por tick a 30 Hz) */
+/* TODO: ajustar la fisica en la placa (unidades: px por tick a 30 Hz) */
 #define GRAVEDAD             1
 #define IMPULSO_ALETEO       (-6)
 #define VELOCIDAD_TUBOS      2
@@ -221,7 +221,7 @@ int main(void)
     if (opt3001_configurar(OPT_CONFIG, OPT_UMBRAL_BAJO, OPT_UMBRAL_ALTO) != XST_SUCCESS)
         xil_printf("OPT3001: fallo la configuracion\r\n");
 
-    /* TODO(compa): AO3 -- aca va la configuracion del IP de musica por UART
+    /* TODO: AO3 -- aca va la configuracion del IP de musica por UART
      *   (pedir tempo/volumen/cancion con scanf o inbyte y escribirlo en los
      *   registros del IP con una funcion que reciba punteros). Todavia no existe
      *   el IP con AXI: el BUZZER de la plantilla es un modulo sin AXI. */
@@ -257,7 +257,7 @@ int main(void)
         switch (juego.estado) {   /* AC1: maquina de estados */
 
         case ESTADO_MENU:
-            /* Empieza con un aplauso. TODO(compa): aceptar tambien joystick/boton */
+            /* Empieza con un aplauso. TODO: aceptar tambien joystick/boton */
             if (detectar_aleteo(&sensores)) {
                 juego_reiniciar(&juego);
                 juego.estado = ESTADO_JUGANDO;
@@ -271,14 +271,14 @@ int main(void)
                 if (juego.puntaje > juego.record) juego.record = juego.puntaje;
                 juego.estado = ESTADO_GAME_OVER;
                 dibujar_game_over(&juego);
-                /* TODO(compa): AC6 cambiar la musica; AC7 guardar record en SD */
+                /* TODO: AC6 cambiar la musica; AC7 guardar record en SD */
             } else {
                 dibujar_juego(&juego);
             }
             break;
 
         case ESTADO_GAME_OVER:
-            /* TODO(compa): volver al menu tras un aplauso o unos segundos */
+            /* TODO: volver al menu tras un aplauso o unos segundos */
             break;
         }
     }
@@ -462,12 +462,12 @@ static void leer_sensores_adc(volatile Sensores *s)
 /* Devuelve 1 si hubo un aplauso/soplido en este tick. */
 static int detectar_aleteo(const volatile Sensores *s)
 {
-    /* TODO(compa): deteccion del aplauso con el microfono.
+    /* TODO: deteccion del aplauso con el microfono.
      *   - Medir en la placa el valor del mic en silencio (~mitad de escala, 512?)
      *     y con un aplauso (imprimirlo por UART).
      *   - Umbral sobre |mic - reposo| + antirrebote (ignorar N ticks despues de un
      *     aleteo) para que un aplauso no cuente dos veces.
-     *   - Respaldo: aceptar tambien un boton (ver LEEME_COMPANERO.md: hoy los
+     *   - Respaldo: aceptar tambien un boton (ver README.md: hoy los
      *     botones van al modulo BUZZER, no al procesador).
      *   Ojo: el Timer 1 muestrea a 200 Hz pero esto se llama a 30 Hz; si se pierden
      *   aplausos, guardar el maximo del mic en leer_sensores_adc() y resetearlo aca. */
@@ -489,19 +489,19 @@ static void juego_reiniciar(Juego *j)
     for (i = 0; i < N_TUBOS; i++) {
         j->tubos[i].x       = PANTALLA_ANCHO + i * (PANTALLA_ANCHO / N_TUBOS + TUBO_ANCHO);
         j->tubos[i].x_ant   = j->tubos[i].x;
-        j->tubos[i].hueco_y = 30;   /* TODO(compa): altura aleatoria (rand()) */
+        j->tubos[i].hueco_y = 30;   /* TODO: altura aleatoria (rand()) */
         j->tubos[i].contado = 0;
     }
 }
 
 static void juego_actualizar(Juego *j, const volatile Sensores *s)
 {
-    /* TODO(compa): fisica del pajaro
+    /* TODO: fisica del pajaro
      *   - guardar y_ant, sumar GRAVEDAD a vel; si detectar_aleteo(s) -> vel = IMPULSO_ALETEO
      *   - limitar y a [0, PANTALLA_ALTO - PAJARO_TAM]
      *   - (opcional) acelerometro: inclinar la placa cambia VELOCIDAD_TUBOS
      *
-     * TODO(compa): tubos
+     * TODO: tubos
      *   - mover x hacia la izquierda; si sale de la pantalla, reaparece a la
      *     derecha con hueco nuevo y contado = 0
      *   - si el tubo paso al pajaro y !contado -> puntaje++ (y un "bip")       */
@@ -511,7 +511,7 @@ static void juego_actualizar(Juego *j, const volatile Sensores *s)
 
 static int juego_hay_choque(const Juego *j)
 {
-    /* TODO(compa): choque con suelo/techo o con un tubo fuera del hueco.
+    /* TODO: choque con suelo/techo o con un tubo fuera del hueco.
      *   Comparar el cuadrado del pajaro (PAJARO_X, y, PAJARO_TAM) con cada tubo. */
     (void)j;
     return 0;
@@ -528,7 +528,7 @@ static void manejar_evento_luz(Juego *j)
     xil_printf("Interrupcion de luz: %d.%02d lux (config=0x%04x)\r\n",
                (int)(cl / 100), (int)(cl % 100), config);
 
-    /* TODO(compa): que hace en el juego. Idea: modo noche (cambia el color del
+    /* TODO: que hace en el juego. Idea: modo noche (cambia el color del
      *   cielo y sube la dificultad), o pausa. Redibujar el fondo completo. */
     j->modo_noche = !j->modo_noche;
 }
@@ -545,13 +545,13 @@ static void dibujar_menu(const Juego *j)
     GUI_DisString_EN(20, 40, "FLAPPY VOZ", &Font16, COLOR_CIELO_DIA, BLACK);
     GUI_DisString_EN(14, 70, "Aplaude para", &Font12, COLOR_CIELO_DIA, BLACK);
     GUI_DisString_EN(30, 84, "empezar", &Font12, COLOR_CIELO_DIA, BLACK);
-    /* TODO(compa): mostrar el record (j->record) y temperatura/luz (AO1) */
+    /* TODO: mostrar el record (j->record) y temperatura/luz (AO1) */
     (void)j;
 }
 
 static void dibujar_juego(const Juego *j)
 {
-    /* TODO(compa): redibujo incremental
+    /* TODO: redibujo incremental
      *   1. pajaro: cuadrado color fondo en (PAJARO_X, y_ant) y luego COLOR_PAJARO en y
      *      GUI_DrawRectangle(x0, y0, x1, y1, color, DRAW_FULL, DOT_PIXEL_1X1);
      *   2. tubos: borrar solo la franja de VELOCIDAD_TUBOS px que quedo a la derecha
