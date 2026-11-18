@@ -34,7 +34,9 @@ Material de referencia (sigue en OneDrive, `Documentos/sepproject2/`):
 2. Revisar el block design: deben aparecer `axi_timer_0`, `axi_timer_1`, `axi_gpio_luz` y `xlconcat_0` conectados al `IRQ_F2P`.
 3. **Generate Bitstream**.
 4. **File → Export → Export Hardware** → *Include bitstream* → `C:\SEP\proyecto2\vivado\P2_SEP.xsa`.
-5. Vitis 2020.1 → workspace `C:\SEP\proyecto2\vitis` → *Application Project* con ese `.xsa` → *Empty Application (C)* → importar `vitis_src/` en `src/`.
+5. Vitis 2020.1 → workspace `C:\SEP\proyecto2\vitis` → *Application Project* con ese `.xsa` → plantilla **Hello World** (trae `platform.c/h` y la UART como consola) → borrar `helloworld.c` → importar `vitis_src/` en `src/`. O todo de una vez con `scripts/04_vitis.tcl` (ver abajo).
+
+> 👉 Plan, estado y pendientes: [`LEEME_COMPANERO.md`](LEEME_COMPANERO.md) · Contexto completo para una IA: [`CONTEXTO_IA.md`](CONTEXTO_IA.md)
 
 > Si el script falla a la mitad: cerrar Vivado, borrar `vivado/` y volver a correrlo.
 
@@ -43,9 +45,10 @@ Sin abrir la GUI (lo que se usó para generar `vivado/` la primera vez; logs en 
 ```bat
 D:\Xilinx\Vivado\2020.1\bin\vivado.bat -mode batch -source C:/SEP/proyecto2/scripts/01_crear_proyecto.tcl
 D:\Xilinx\Vivado\2020.1\bin\vivado.bat -mode batch -source C:/SEP/proyecto2/scripts/03_build.tcl
+D:\Xilinx\Vitis\2020.1\bin\xsct.bat C:/SEP/proyecto2/scripts/04_vitis.tcl
 ```
 
-`03_build.tcl` deja el bitstream y `vivado/P2_SEP.xsa` (con bitstream) listo para Vitis.
+`03_build.tcl` deja el bitstream y `vivado/P2_SEP.xsa` (con bitstream) listo para Vitis; `04_vitis.tcl` crea el workspace `vitis/` (plataforma + app) y compila el ELF.
 
 ### Direcciones asignadas (hardware del avance)
 

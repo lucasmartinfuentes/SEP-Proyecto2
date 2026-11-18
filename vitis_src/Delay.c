@@ -1,7 +1,7 @@
 #include "xparameters.h"
 
 #include "Delay.h"
-#include <unistd.h>
+/* #include <unistd.h>  -- quitado: choca con sleep.h del BSP 2020.1 (usleep/sleep con otros tipos) */
 //#define USE_DEFAULT_USLEEP
 
 #if !defined(USE_DEFAULT_USLEEP)
