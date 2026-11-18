@@ -1,0 +1,13 @@
+# Generado por los scripts (se regenera con 01_crear_proyecto.tcl + 03_build.tcl)
+/vivado/
+/vitis/
+/logs/
+
+# Basura de Vivado/Vitis
+*.jou
+*.log
+*.str
+.Xil/
+NA/
+.metadata/
+RemoteSystemsTempFiles/
