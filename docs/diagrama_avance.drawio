@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram id="avance" name="Diagrama avance">
-    <mxGraphModel dx="1200" dy="1260" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1260" math="0" shadow="0">
+    <mxGraphModel dx="1200" dy="1260" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1220" pageHeight="1260" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -11,27 +11,27 @@
         </mxCell>
 
         <!-- Zonas -->
-        <mxCell id="zona_booster" value="Booster BOOSTXL-EDUMKII" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="70" width="170" height="30" as="geometry" />
+        <mxCell id="zona_booster" value="Booster" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="150" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="zona_pl" value="PL · Vivado (VHDL / IP)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F0FF;strokeColor=#7F77DD;verticalAlign=top;fontStyle=1;fontSize=14;spacingTop=6;" vertex="1" parent="1">
-          <mxGeometry x="300" y="60" width="250" height="900" as="geometry" />
+        <mxCell id="zona_pl" value="PL · Vivado" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F0FF;strokeColor=#7F77DD;verticalAlign=top;fontStyle=1;fontSize=14;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="300" y="60" width="340" height="900" as="geometry" />
         </mxCell>
-        <mxCell id="zona_ps" value="PS · Vitis (C en el ARM Cortex-A9)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F7F1;strokeColor=#1D9E75;verticalAlign=top;fontStyle=1;fontSize=14;spacingTop=6;" vertex="1" parent="1">
-          <mxGeometry x="680" y="60" width="250" height="900" as="geometry" />
+        <mxCell id="zona_ps" value="PS · Vitis (C)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F7F1;strokeColor=#1D9E75;verticalAlign=top;fontStyle=1;fontSize=14;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="720" y="60" width="300" height="900" as="geometry" />
         </mxCell>
 
         <!-- Booster (periféricos físicos) -->
-        <mxCell id="ext_lcd" value="Pantalla LCD&lt;br&gt;128×128" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+        <mxCell id="ext_lcd" value="Pantalla" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="50" y="120" width="150" height="90" as="geometry" />
         </mxCell>
         <mxCell id="ext_adc" value="Micrófono,&lt;br&gt;acelerómetro,&lt;br&gt;joystick" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="50" y="240" width="150" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="ext_i2c" value="Sensor de luz OPT3001&lt;br&gt;Sensor de temperatura TMP006" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+        <mxCell id="ext_i2c" value="Sensores de luz&lt;br&gt;y temperatura" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="50" y="360" width="150" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="ext_int" value="Pin INT&lt;br&gt;del OPT3001" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+        <mxCell id="ext_int" value="Aviso del&lt;br&gt;sensor de luz" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="50" y="480" width="150" height="90" as="geometry" />
         </mxCell>
         <mxCell id="ext_buzzer" value="Buzzer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;dashed=1;opacity=60;textOpacity=70;fontSize=12;" vertex="1" parent="1">
@@ -39,7 +39,7 @@
         </mxCell>
 
         <!-- PL: bloques hechos -->
-        <mxCell id="pl_spi_lcd" value="&lt;b&gt;SPI de la pantalla&lt;/b&gt;&lt;br&gt;envía píxeles al LCD&lt;br&gt;&lt;i&gt;basado en Lab 10, AY11&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;" vertex="1" parent="1">
+        <mxCell id="pl_spi_lcd" value="&lt;b&gt;SPI de la pantalla&lt;/b&gt;&lt;br&gt;envía la imagen&lt;br&gt;&lt;i&gt;basado en Lab 10, AY11&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="340" y="120" width="170" height="90" as="geometry" />
         </mxCell>
         <mxCell id="pl_spi_adc" value="&lt;b&gt;SPI del ADC&lt;/b&gt;&lt;br&gt;lee mic, acelerómetro&lt;br&gt;y joystick&lt;br&gt;&lt;i&gt;basado en Lab 10, AY11&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#D79B00;strokeWidth=3;fontSize=12;" vertex="1" parent="1">
@@ -54,6 +54,14 @@
         <mxCell id="pl_timers" value="&lt;b&gt;2 Timers AXI&lt;/b&gt;&lt;br&gt;30 Hz juego · 200 Hz sensores&lt;br&gt;&lt;i&gt;basado en Lab 7, AY7&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="340" y="600" width="170" height="90" as="geometry" />
         </mxCell>
+        <mxCell id="pl_concat" value="&lt;b&gt;Concat&lt;/b&gt;&lt;br&gt;junta las interrupciones&lt;br&gt;&lt;br&gt;&lt;i&gt;basado en proyecto Snake&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="555" y="520" width="70" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- PL: bus AXI (une el procesador con los periféricos) -->
+        <mxCell id="bus_axi" value="Bus AXI" style="rounded=0;html=1;fillColor=#B4B2E8;strokeColor=#7F77DD;horizontal=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="522" y="120" width="16" height="680" as="geometry" />
+        </mxCell>
 
         <!-- PL: bloques futuros (chicos y tenues) -->
         <mxCell id="pl_musica" value="IP de música" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;dashed=1;opacity=50;textOpacity=60;fontSize=12;" vertex="1" parent="1">
@@ -65,35 +73,35 @@
 
         <!-- PS: bloques hechos -->
         <mxCell id="ps_fsm" value="&lt;b&gt;Máquina de estados&lt;/b&gt;&lt;br&gt;menú, juego, game over&lt;br&gt;&lt;i&gt;(propia)&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="720" y="120" width="170" height="90" as="geometry" />
+          <mxGeometry x="760" y="120" width="170" height="90" as="geometry" />
         </mxCell>
         <mxCell id="ps_juego" value="&lt;b&gt;Lógica del juego&lt;/b&gt;&lt;br&gt;física, tubos y choques&lt;br&gt;&lt;i&gt;(propia)&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="720" y="240" width="170" height="90" as="geometry" />
+          <mxGeometry x="760" y="240" width="170" height="90" as="geometry" />
         </mxCell>
         <mxCell id="ps_drivers" value="&lt;b&gt;Drivers&lt;/b&gt;&lt;br&gt;pantalla, ADC e I2C&lt;br&gt;&lt;i&gt;basado en Lab 10, AY10, AY11&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="720" y="360" width="170" height="90" as="geometry" />
+          <mxGeometry x="760" y="360" width="170" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="ps_irq" value="&lt;b&gt;Interrupciones&lt;/b&gt;&lt;br&gt;GIC y handlers&lt;br&gt;&lt;i&gt;basado en Lab 7, AY7&lt;br&gt;y proyecto Snake&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="720" y="480" width="170" height="90" as="geometry" />
+        <mxCell id="ps_irq" value="&lt;b&gt;Interrupciones&lt;/b&gt;&lt;br&gt;atiende timers y luz&lt;br&gt;&lt;i&gt;basado en Lab 7, AY7&lt;br&gt;y proyecto Snake&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="480" width="170" height="90" as="geometry" />
         </mxCell>
 
         <!-- PS: bloques futuros (chicos y tenues) -->
         <mxCell id="ps_musica" value="Config. de música por UART" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;dashed=1;opacity=50;textOpacity=60;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="740" y="615" width="130" height="60" as="geometry" />
+          <mxGeometry x="780" y="615" width="130" height="60" as="geometry" />
         </mxCell>
         <mxCell id="ps_sd" value="Récord en SD" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;dashed=1;opacity=50;textOpacity=60;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="740" y="735" width="130" height="60" as="geometry" />
+          <mxGeometry x="780" y="735" width="130" height="60" as="geometry" />
         </mxCell>
 
         <!-- Externos del PS (futuros) -->
-        <mxCell id="ext_pc" value="PC (UART)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;dashed=1;opacity=60;textOpacity=70;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="690" y="1010" width="100" height="60" as="geometry" />
+        <mxCell id="ext_pc" value="PC" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;dashed=1;opacity=60;textOpacity=70;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="730" y="1010" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="ext_sd" value="Tarjeta SD" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;dashed=1;opacity=60;textOpacity=70;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="820" y="1010" width="100" height="60" as="geometry" />
+          <mxGeometry x="860" y="1010" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ext_qspi" value="Boot desde QSPI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAD9C6;strokeColor=#8B5A2B;dashed=1;opacity=50;textOpacity=60;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="495" width="130" height="60" as="geometry" />
+        <mxCell id="ext_qspi" value="Boot desde memoria" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAD9C6;strokeColor=#8B5A2B;dashed=1;opacity=50;textOpacity=60;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="585" width="130" height="60" as="geometry" />
         </mxCell>
 
         <!-- Etiquetas de actividad (hechas: sólidas; futuras: tenues) -->
@@ -102,45 +110,78 @@
         <mxCell id="tag_i2c" value="AO1 · futura AC3" style="rounded=0;html=1;fillColor=#6C8EBF;strokeColor=#6C8EBF;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="405" y="342" width="105" height="18" as="geometry" /></mxCell>
         <mxCell id="tag_gpio_luz" value="AO2" style="rounded=0;html=1;fillColor=#B85450;strokeColor=#B85450;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="470" y="462" width="40" height="18" as="geometry" /></mxCell>
         <mxCell id="tag_timers" value="AO2" style="rounded=0;html=1;fillColor=#B85450;strokeColor=#B85450;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="470" y="582" width="40" height="18" as="geometry" /></mxCell>
-        <mxCell id="tag_fsm" value="AC1" style="rounded=0;html=1;fillColor=#9673A6;strokeColor=#9673A6;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="850" y="102" width="40" height="18" as="geometry" /></mxCell>
-        <mxCell id="tag_juego" value="AC2" style="rounded=0;html=1;fillColor=#666666;strokeColor=#666666;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="850" y="222" width="40" height="18" as="geometry" /></mxCell>
-        <mxCell id="tag_drivers" value="AO1" style="rounded=0;html=1;fillColor=#6C8EBF;strokeColor=#6C8EBF;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="850" y="342" width="40" height="18" as="geometry" /></mxCell>
-        <mxCell id="tag_irq" value="AO2" style="rounded=0;html=1;fillColor=#B85450;strokeColor=#B85450;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="850" y="462" width="40" height="18" as="geometry" /></mxCell>
+        <mxCell id="tag_concat" value="AO2" style="rounded=0;html=1;fillColor=#B85450;strokeColor=#B85450;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="585" y="502" width="40" height="18" as="geometry" /></mxCell>
+        <mxCell id="tag_fsm" value="AC1" style="rounded=0;html=1;fillColor=#9673A6;strokeColor=#9673A6;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="890" y="102" width="40" height="18" as="geometry" /></mxCell>
+        <mxCell id="tag_juego" value="AC2" style="rounded=0;html=1;fillColor=#666666;strokeColor=#666666;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="890" y="222" width="40" height="18" as="geometry" /></mxCell>
+        <mxCell id="tag_drivers" value="AO1" style="rounded=0;html=1;fillColor=#6C8EBF;strokeColor=#6C8EBF;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="890" y="342" width="40" height="18" as="geometry" /></mxCell>
+        <mxCell id="tag_irq" value="AO2" style="rounded=0;html=1;fillColor=#B85450;strokeColor=#B85450;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="890" y="462" width="40" height="18" as="geometry" /></mxCell>
         <mxCell id="tag_musica" value="futura AO3 · AC6" style="rounded=0;html=1;fillColor=#82B366;strokeColor=#82B366;fontColor=#FFFFFF;fontSize=10;fontStyle=1;opacity=50;textOpacity=80;" vertex="1" parent="1"><mxGeometry x="385" y="717" width="105" height="18" as="geometry" /></mxCell>
         <mxCell id="tag_ila" value="futura AC5" style="rounded=0;html=1;fillColor=#C2185B;strokeColor=#C2185B;fontColor=#FFFFFF;fontSize=10;fontStyle=1;opacity=50;textOpacity=80;" vertex="1" parent="1"><mxGeometry x="420" y="837" width="70" height="18" as="geometry" /></mxCell>
-        <mxCell id="tag_ps_musica" value="futura AO3" style="rounded=0;html=1;fillColor=#82B366;strokeColor=#82B366;fontColor=#FFFFFF;fontSize=10;fontStyle=1;opacity=50;textOpacity=80;" vertex="1" parent="1"><mxGeometry x="800" y="597" width="70" height="18" as="geometry" /></mxCell>
-        <mxCell id="tag_sd" value="futura AC7" style="rounded=0;html=1;fillColor=#D6B656;strokeColor=#D6B656;fontColor=#FFFFFF;fontSize=10;fontStyle=1;opacity=50;textOpacity=80;" vertex="1" parent="1"><mxGeometry x="800" y="717" width="70" height="18" as="geometry" /></mxCell>
-        <mxCell id="tag_qspi" value="futura AC4" style="rounded=0;html=1;fillColor=#8B5A2B;strokeColor=#8B5A2B;fontColor=#FFFFFF;fontSize=10;fontStyle=1;opacity=50;textOpacity=80;" vertex="1" parent="1"><mxGeometry x="1080" y="477" width="70" height="18" as="geometry" /></mxCell>
+        <mxCell id="tag_ps_musica" value="futura AO3" style="rounded=0;html=1;fillColor=#82B366;strokeColor=#82B366;fontColor=#FFFFFF;fontSize=10;fontStyle=1;opacity=50;textOpacity=80;" vertex="1" parent="1"><mxGeometry x="840" y="597" width="70" height="18" as="geometry" /></mxCell>
+        <mxCell id="tag_sd" value="futura AC7" style="rounded=0;html=1;fillColor=#D6B656;strokeColor=#D6B656;fontColor=#FFFFFF;fontSize=10;fontStyle=1;opacity=50;textOpacity=80;" vertex="1" parent="1"><mxGeometry x="840" y="717" width="70" height="18" as="geometry" /></mxCell>
+        <mxCell id="tag_qspi" value="futura AC4" style="rounded=0;html=1;fillColor=#8B5A2B;strokeColor=#8B5A2B;fontColor=#FFFFFF;fontSize=10;fontStyle=1;opacity=50;textOpacity=80;" vertex="1" parent="1"><mxGeometry x="1120" y="567" width="70" height="18" as="geometry" /></mxCell>
 
-        <!-- Flechas: una por par de bloques, dato rotulado encima -->
-        <mxCell id="e_lcd" value="píxeles RGB565" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="pl_spi_lcd" target="ext_lcd">
+        <!-- Flechas Booster <-> PL -->
+        <mxCell id="e_lcd" value="imagen" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="pl_spi_lcd" target="ext_lcd">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_adc" value="muestras de 10 bits" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="ext_adc" target="pl_spi_adc">
+        <mxCell id="e_adc" value="muestras" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="ext_adc" target="pl_spi_adc">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_i2c" value="lux y °C · límites&lt;br&gt;0x02 / 0x03" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="ext_i2c" target="pl_i2c">
+        <mxCell id="e_i2c" value="lux y °C" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="ext_i2c" target="pl_i2c">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_int" value="INT activo en bajo" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="ext_int" target="pl_gpio_luz">
+        <mxCell id="e_int" value="aviso de luz" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="ext_int" target="pl_gpio_luz">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_buzzer" value="PWM (tono)" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;dashed=1;opacity=50;textOpacity=60;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="pl_musica" target="ext_buzzer">
+        <mxCell id="e_buzzer" value="tono" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;dashed=1;opacity=50;textOpacity=60;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="pl_musica" target="ext_buzzer">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_axi" value="AXI4-Lite&lt;br&gt;lee / escribe registros" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=0;exitY=0.25;entryX=1;entryY=0.25;" edge="1" parent="1" source="zona_ps" target="zona_pl">
+
+        <!-- Dentro de la PL: cada periférico colgado del bus AXI -->
+        <mxCell id="s_spi_lcd" style="endArrow=none;html=1;exitX=1;exitY=0.25;entryX=0;entryY=0.032;" edge="1" parent="1" source="pl_spi_lcd" target="bus_axi"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s_spi_adc" style="endArrow=none;html=1;exitX=1;exitY=0.25;entryX=0;entryY=0.209;" edge="1" parent="1" source="pl_spi_adc" target="bus_axi"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s_i2c" style="endArrow=none;html=1;exitX=1;exitY=0.25;entryX=0;entryY=0.385;" edge="1" parent="1" source="pl_i2c" target="bus_axi"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s_gpio" style="endArrow=none;html=1;exitX=1;exitY=0.25;entryX=0;entryY=0.562;" edge="1" parent="1" source="pl_gpio_luz" target="bus_axi"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s_timers" style="endArrow=none;html=1;exitX=1;exitY=0.25;entryX=0;entryY=0.738;" edge="1" parent="1" source="pl_timers" target="bus_axi"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s_musica" style="endArrow=none;html=1;dashed=1;opacity=50;exitX=1;exitY=0.5;entryX=0;entryY=0.949;" edge="1" parent="1" source="pl_musica" target="bus_axi"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Dentro de la PL: interrupciones hacia el Concat -->
+        <mxCell id="i_gpio" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.7;entryX=0;entryY=0.144;" edge="1" parent="1" source="pl_gpio_luz" target="pl_concat"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="i_timers" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.7;entryX=0;entryY=0.894;" edge="1" parent="1" source="pl_timers" target="pl_concat"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- PL <-> PS -->
+        <mxCell id="e_axi" value="AXI (lee / escribe)" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=0;exitY=0.5;entryX=1;entryY=0.419;" edge="1" parent="1" source="ps_drivers" target="bus_axi">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_irq" value="IRQ 61, 62, 63&lt;br&gt;(timers y luz)" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=1;exitY=0.583;entryX=0;entryY=0.583;" edge="1" parent="1" source="zona_pl" target="zona_ps">
+        <mxCell id="e_irq" value="interrupciones" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;exitX=1;exitY=0.144;entryX=0;entryY=0.7;" edge="1" parent="1" source="pl_concat" target="ps_irq">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_uart" value="UART 115200" style="endArrow=block;endFill=1;html=1;align=left;verticalAlign=middle;spacingLeft=6;labelBackgroundColor=none;fontSize=11;dashed=1;opacity=50;textOpacity=60;exitX=0.5;exitY=0;entryX=0.24;entryY=1;" edge="1" parent="1" source="ext_pc" target="zona_ps">
+
+        <!-- Dentro de la PS -->
+        <mxCell id="p_estado" value="estado" style="endArrow=block;endFill=1;html=1;align=right;verticalAlign=middle;spacingRight=6;labelBackgroundColor=none;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="ps_fsm" target="ps_juego">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_sd" value="récord (FAT)" style="endArrow=block;endFill=1;html=1;align=left;verticalAlign=middle;spacingLeft=6;labelBackgroundColor=none;fontSize=11;dashed=1;opacity=50;textOpacity=60;exitX=0.76;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="zona_ps" target="ext_sd">
+        <mxCell id="p_drivers" value="sensores / dibujo" style="startArrow=block;startFill=1;endArrow=block;endFill=1;html=1;align=right;verticalAlign=middle;spacingRight=6;labelBackgroundColor=none;fontSize=11;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="ps_drivers" target="ps_juego">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_qspi" value="BOOT.bin" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;dashed=1;opacity=50;textOpacity=60;exitX=0;exitY=0.5;entryX=1;entryY=0.517;" edge="1" parent="1" source="ext_qspi" target="zona_ps">
+        <mxCell id="p_banderas" value="banderas" style="endArrow=block;endFill=1;html=1;align=left;verticalAlign=middle;spacingLeft=4;labelBackgroundColor=none;fontSize=11;exitX=1;exitY=0.3;entryX=1;entryY=0.5;" edge="1" parent="1" source="ps_irq" target="ps_fsm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="955" y="507" />
+              <mxPoint x="955" y="165" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- PS <-> externos (futuros) -->
+        <mxCell id="e_uart" value="parámetros" style="endArrow=block;endFill=1;html=1;align=left;verticalAlign=middle;spacingLeft=6;labelBackgroundColor=none;fontSize=11;dashed=1;opacity=50;textOpacity=60;exitX=0.5;exitY=0;entryX=0.2;entryY=1;" edge="1" parent="1" source="ext_pc" target="zona_ps">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sd" value="récord" style="endArrow=block;endFill=1;html=1;align=left;verticalAlign=middle;spacingLeft=6;labelBackgroundColor=none;fontSize=11;dashed=1;opacity=50;textOpacity=60;exitX=0.633;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="zona_ps" target="ext_sd">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_qspi" value="programa" style="endArrow=block;endFill=1;html=1;verticalAlign=bottom;labelBackgroundColor=none;fontSize=11;dashed=1;opacity=50;textOpacity=60;exitX=0;exitY=0.5;entryX=1;entryY=0.617;" edge="1" parent="1" source="ext_qspi" target="zona_ps">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
@@ -161,7 +202,7 @@
         <mxCell id="ley_ac3" value="" style="rounded=0;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=3;" vertex="1" parent="1"><mxGeometry x="350" y="1034" width="24" height="16" as="geometry" /></mxCell>
         <mxCell id="ley_ac3_t" value="AC3 · 2 periféricos extra (joystick, temperatura)" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1030" width="280" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac4" value="" style="rounded=0;html=1;fillColor=#EAD9C6;strokeColor=#8B5A2B;" vertex="1" parent="1"><mxGeometry x="350" y="1060" width="24" height="16" as="geometry" /></mxCell>
-        <mxCell id="ley_ac4_t" value="AC4 · boot desde QSPI" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1056" width="280" height="24" as="geometry" /></mxCell>
+        <mxCell id="ley_ac4_t" value="AC4 · boot (el programa queda guardado)" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1056" width="280" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac5" value="" style="rounded=0;html=1;fillColor=#F8D7E8;strokeColor=#C2185B;" vertex="1" parent="1"><mxGeometry x="350" y="1086" width="24" height="16" as="geometry" /></mxCell>
         <mxCell id="ley_ac5_t" value="AC5 · ILA y VIO" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1082" width="280" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac6" value="" style="rounded=0;html=1;fillColor=#E9F7D0;strokeColor=#7CB342;strokeWidth=3;" vertex="1" parent="1"><mxGeometry x="350" y="1112" width="24" height="16" as="geometry" /></mxCell>
