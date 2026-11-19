@@ -15,19 +15,19 @@ generada por un IP Core propio.
 | Vivado: plantilla del curso + 2 AXI Timer + interrupción del sensor de luz | Listo. Bitstream generado, sin advertencias críticas, timing cumplido en los dos relojes (WNS +2,45 ns) |
 | Hardware exportado (`hw/P2_SEP.xsa`, con bitstream) | Listo |
 | Vitis: plataforma y aplicación | Listo. Compila sin errores ni warnings |
-| `vitis_src/main.c` | Esqueleto: inicializaciones, interrupciones, registros del OPT3001 y máquina de estados. La lógica del juego está pendiente (marcada con `TODO`) |
-| Pruebas en la Zybo | Pendiente |
-| Diagrama del avance | Pendiente |
+| `vitis_src/main.c` | Juego v1 completo (menú, juego, game over). El menú muestra en pantalla la evidencia de AO1 y AO2: interrupciones por segundo de cada timer, modo día/noche, contador de interrupciones de luz y los registros 0x01/0x02/0x03 del OPT3001 leídos de vuelta. Compila sin warnings |
+| Pruebas en la Zybo | Pendiente: probar y ajustar los valores marcados `CALIBRAR` |
+| Diagrama del avance | Listo: `docs/diagrama_avance.drawio` (falta número de grupo y exportar a PDF) |
 
 ## Actividades del enunciado
 
 | Actividad | Implementación | Estado |
 | :--- | :--- | :--- |
-| AO1 · LCD + 3 sensores + 2 registros | LCD con el juego; micrófono, acelerómetro y luz; límites 0x02/0x03 y config 0x01 del OPT3001 | Funciones listas, falta lógica y prueba |
-| AO2 · 2 timers + interrupción de luz | `axi_timer_0` (juego, 30 Hz), `axi_timer_1` (muestreo ADC, 200 Hz), INT del OPT3001 en `axi_gpio_luz` | Hardware listo, handlers sin probar |
+| AO1 · LCD + 3 sensores + 2 registros | LCD con el juego; micrófono, acelerómetro, luz y temperatura; límites 0x02/0x03 y config 0x01 del OPT3001 | Código listo, sin probar |
+| AO2 · 2 timers + interrupción de luz | `axi_timer_0` (juego, 30 Hz), `axi_timer_1` (muestreo ADC, 200 Hz), INT del OPT3001 en `axi_gpio_luz` | Código listo, sin probar |
 | AO3 · IP Core configurado por UART | IP de música con registros AXI para el buzzer | Pendiente |
-| AC1 · Máquina de estados | Menú → juego → game over | Esqueleto |
-| AC2 · structs, punteros, macros | `Juego`, `Pajaro`, `Tubo[]`, `Sensores` | Esqueleto |
+| AC1 · Máquina de estados | Menú → juego → game over | Listo, sin probar |
+| AC2 · structs, punteros, macros | `Juego`, `Pajaro`, `Tubo[]`, `Sensores` | Listo |
 | AC3 · 2 periféricos extra | Joystick + temperatura o LED RGB | Pendiente |
 | AC4 · Boot | `BOOT.bin` en QSPI | Pendiente |
 | AC5 · ILA y VIO | Sobre el AXI del IP de música o el SPI del ADC | Pendiente |
@@ -44,10 +44,12 @@ generada por un IP Core propio.
      pull-up del pin INT y, si falta, agregar `PULLUP true` a U15 en el `.xdc`).
 3. Medir valores reales: micrófono en silencio y con aplauso, lux con el sensor
    destapado y tapado, acelerómetro plano e inclinado.
-4. Completar los `TODO` de `main.c`: umbrales del OPT3001, detección del aplauso,
-   física, choques, dibujo incremental y estados.
-5. Diagrama: todas las actividades, datos sobre las flechas, un color por actividad y la
-   separación Vivado/Vitis.
+4. Ajustar en `main.c` las constantes marcadas `CALIBRAR` con esos valores.
+5. En el menú, comprobar la evidencia en pantalla: `Int/s T0:~30 T1:~200`; al tapar el
+   sensor, `Modo` pasa a `NOCHE`, `IntLuz` sube y `R2/R3` cambian a los límites de
+   noche. Si `T0` marca más de 30, el dibujo tarda más de 33 ms por frame.
+6. Grabar la demo (video de máximo 5 min) y entregar un PDF con el diagrama y el link
+   público al video.
 
 ## Cómo trabajar
 
