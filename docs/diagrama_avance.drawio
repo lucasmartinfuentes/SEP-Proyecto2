@@ -186,30 +186,29 @@
         </mxCell>
 
         <!-- Leyenda -->
-        <mxCell id="ley_titulo" value="Leyenda: dónde se cumple cada actividad" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="ley_titulo" value="Leyenda" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="1000" width="300" height="24" as="geometry" />
         </mxCell>
         <mxCell id="ley_ao1" value="" style="rounded=0;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1"><mxGeometry x="40" y="1034" width="24" height="16" as="geometry" /></mxCell>
-        <mxCell id="ley_ao1_t" value="AO1 · pantalla + 3 sensores + 2 registros" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="72" y="1030" width="260" height="24" as="geometry" /></mxCell>
+        <mxCell id="ley_ao1_t" value="AO1 · pantalla y sensores" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="72" y="1030" width="260" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ao2" value="" style="rounded=0;html=1;fillColor=#F8CECC;strokeColor=#B85450;" vertex="1" parent="1"><mxGeometry x="40" y="1060" width="24" height="16" as="geometry" /></mxCell>
-        <mxCell id="ley_ao2_t" value="AO2 · 2 timers + interrupción de luz" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="72" y="1056" width="260" height="24" as="geometry" /></mxCell>
+        <mxCell id="ley_ao2_t" value="AO2 · interrupciones" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="72" y="1056" width="260" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ao3" value="" style="rounded=0;html=1;fillColor=#D5E8D4;strokeColor=#82B366;" vertex="1" parent="1"><mxGeometry x="40" y="1086" width="24" height="16" as="geometry" /></mxCell>
-        <mxCell id="ley_ao3_t" value="AO3 · IP Core configurado por UART" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="72" y="1082" width="260" height="24" as="geometry" /></mxCell>
+        <mxCell id="ley_ao3_t" value="AO3 · IP por UART" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="72" y="1082" width="260" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac1" value="" style="rounded=0;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;" vertex="1" parent="1"><mxGeometry x="40" y="1112" width="24" height="16" as="geometry" /></mxCell>
         <mxCell id="ley_ac1_t" value="AC1 · máquina de estados" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="72" y="1108" width="260" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac2" value="" style="rounded=0;html=1;fillColor=#F5F5F5;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="40" y="1138" width="24" height="16" as="geometry" /></mxCell>
-        <mxCell id="ley_ac2_t" value="AC2 · structs, punteros, funciones, macros" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="72" y="1134" width="260" height="24" as="geometry" /></mxCell>
+        <mxCell id="ley_ac2_t" value="AC2 · structs y punteros" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="72" y="1134" width="260" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac3" value="" style="rounded=0;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=3;" vertex="1" parent="1"><mxGeometry x="350" y="1034" width="24" height="16" as="geometry" /></mxCell>
-        <mxCell id="ley_ac3_t" value="AC3 · 2 periféricos extra (joystick, temperatura)" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1030" width="280" height="24" as="geometry" /></mxCell>
+        <mxCell id="ley_ac3_t" value="AC3 · periféricos extra" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1030" width="280" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac4" value="" style="rounded=0;html=1;fillColor=#EAD9C6;strokeColor=#8B5A2B;" vertex="1" parent="1"><mxGeometry x="350" y="1060" width="24" height="16" as="geometry" /></mxCell>
-        <mxCell id="ley_ac4_t" value="AC4 · boot (el programa queda guardado)" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1056" width="280" height="24" as="geometry" /></mxCell>
+        <mxCell id="ley_ac4_t" value="AC4 · boot" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1056" width="280" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac5" value="" style="rounded=0;html=1;fillColor=#F8D7E8;strokeColor=#C2185B;" vertex="1" parent="1"><mxGeometry x="350" y="1086" width="24" height="16" as="geometry" /></mxCell>
         <mxCell id="ley_ac5_t" value="AC5 · ILA y VIO" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1082" width="280" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac6" value="" style="rounded=0;html=1;fillColor=#E9F7D0;strokeColor=#7CB342;strokeWidth=3;" vertex="1" parent="1"><mxGeometry x="350" y="1112" width="24" height="16" as="geometry" /></mxCell>
-        <mxCell id="ley_ac6_t" value="AC6 · música en el buzzer" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1108" width="280" height="24" as="geometry" /></mxCell>
+        <mxCell id="ley_ac6_t" value="AC6 · música" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1108" width="280" height="24" as="geometry" /></mxCell>
         <mxCell id="ley_ac7" value="" style="rounded=0;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;" vertex="1" parent="1"><mxGeometry x="350" y="1138" width="24" height="16" as="geometry" /></mxCell>
-        <mxCell id="ley_ac7_t" value="AC7 · memoria SD" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1134" width="280" height="24" as="geometry" /></mxCell>
-        <mxCell id="ley_notas" value="Etiqueta sobre cada bloque = actividad que cumple · &lt;b&gt;futura&lt;/b&gt; = se implementa después del avance&lt;br&gt;Bloques chicos, tenues y punteados = planificados · borde grueso naranjo = también cumple AC3&lt;br&gt;&lt;i&gt;(propia)&lt;/i&gt; = hecho por el grupo · &lt;i&gt;basado en&lt;/i&gt; = adaptado de un lab, ayudantía o proyecto del curso" style="text;html=1;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1"><mxGeometry x="40" y="1166" width="640" height="54" as="geometry" /></mxCell>
+        <mxCell id="ley_ac7_t" value="AC7 · SD" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="382" y="1134" width="280" height="24" as="geometry" /></mxCell>
       </root>
     </mxGraphModel>
   </diagram>
